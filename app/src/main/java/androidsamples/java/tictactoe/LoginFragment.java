@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LoginFragment extends Fragment {
-
+    private String TAG = "LoginFragment";
     private FirebaseAuth auth;
     private EditText email,password;
     private DatabaseReference userRef;
@@ -65,14 +65,16 @@ public class LoginFragment extends Fragment {
                         pd.dismiss();
                         return;
                     }
+                    Log.i(TAG,"Trying to enter");
                     auth.fetchSignInMethodsForEmail(email.getText().toString())
                                     .addOnCompleteListener(task->{
                                         if(task.isSuccessful()){
                                             List<String> signInMethods = task.getResult().getSignInMethods();
                                             // If the email already exists (i.e., there's at least one sign-in method)
-                                            Log.i("signinmethods", signInMethods.get(0));
                                             if (signInMethods != null && !signInMethods.isEmpty()) {
                                                 // Proceed with login
+                                                Log.i(TAG, signInMethods.get(0));
+                                                Log.i(TAG,"Entered");
                                                 login(email.getText().toString(), password.getText().toString());
                                             }
                                             else{
@@ -80,8 +82,8 @@ public class LoginFragment extends Fragment {
                                                         .addOnCompleteListener(task2->{
                                                             if(!task2.isSuccessful()){
 
-                                                                Toast.makeText(getContext(), task2.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                                                task2.getException().printStackTrace();
+                                                                Log.i(TAG,"Entered2");
+                                                                login(email.getText().toString(), password.getText().toString());
 
                                                             }
                                                             else{
@@ -98,10 +100,7 @@ public class LoginFragment extends Fragment {
                                             // Handle error if fetchSignInMethodsForEmail fails
                                             Toast.makeText(getContext(), "Error checking email: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
-
                                     });
-                    NavDirections action = LoginFragmentDirections.actionLoginSuccessful();
-                    Navigation.findNavController(v).navigate(action);
                 });
 
         return view;
