@@ -24,4 +24,12 @@
   <string name="yes">Yes</string>
   <string name="cancel">Cancel</string>
   <string name="confirm">Confirm</string>
+
+  <string name="won">Won</string>
+  <string name="lost">Lost</string>
+  <string name="draw">Draw</string>
+
+  <string name="zero">0</string>
+
+  <string name="open_games">Open Games</string>
 </resources>

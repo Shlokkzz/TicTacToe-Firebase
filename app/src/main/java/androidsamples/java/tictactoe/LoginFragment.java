@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LoginFragment extends Fragment {
-    private String TAG = "LoginFragment";
+    private static final String TAG = "LoginFragment";
     private FirebaseAuth auth;
     private EditText email,password;
     private DatabaseReference userRef;
@@ -38,7 +38,7 @@ public class LoginFragment extends Fragment {
 
         // TODO if a user is logged in, go to Dashboard
         auth = FirebaseAuth.getInstance();
-        userRef = FirebaseDatabase.getInstance("https://tictactoe-bf023-default-rtdb.firebaseio.com/").getReference("users");
+        userRef = FirebaseDatabase.getInstance("https://tictactoe-e88dd-default-rtdb.firebaseio.com/").getReference("users");
 
         if(auth.getCurrentUser()!=null){
             NavHostFragment.findNavController(this).navigate(R.id.action_login_successful);
@@ -90,6 +90,7 @@ public class LoginFragment extends Fragment {
                                                                 Toast.makeText(getContext(), "User Registered", Toast.LENGTH_SHORT).show();
                                                                 NavHostFragment.findNavController(this).navigate(R.id.action_login_successful);
                                                                 userRef.child(task2.getResult().getUser().getUid()).child("won").setValue(0);
+                                                                userRef.child(task2.getResult().getUser().getUid()).child("draw").setValue(0);
                                                                 userRef.child(task2.getResult().getUser().getUid()).child("lost").setValue(0);
                                                             }
                                                             pd.dismiss();
