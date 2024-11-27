@@ -438,6 +438,22 @@ public class GameFragment extends Fragment {
     }
   }
 
+  public static int testCheckWin(String[] gameArr) {
+    String myChar = "X";
+    String winChar = "";
+    if  (gameArr[0].equals(gameArr[1]) && gameArr[1].equals(gameArr[2]) && !gameArr[0].isEmpty()) winChar = gameArr[0];
+    else if (gameArr[3].equals(gameArr[4]) && gameArr[4].equals(gameArr[5]) && !gameArr[3].isEmpty()) winChar = gameArr[3];
+    else if (gameArr[6].equals(gameArr[7]) && gameArr[7].equals(gameArr[8]) && !gameArr[6].isEmpty()) winChar = gameArr[6];
+    else if (gameArr[0].equals(gameArr[3]) && gameArr[3].equals(gameArr[6]) && !gameArr[0].isEmpty()) winChar = gameArr[0];
+    else if (gameArr[4].equals(gameArr[1]) && gameArr[1].equals(gameArr[7]) && !gameArr[1].isEmpty()) winChar = gameArr[1];
+    else if (gameArr[2].equals(gameArr[5]) && gameArr[5].equals(gameArr[8]) && !gameArr[2].isEmpty()) winChar = gameArr[2];
+    else if (gameArr[0].equals(gameArr[4]) && gameArr[4].equals(gameArr[8]) && !gameArr[0].isEmpty()) winChar = gameArr[0];
+    else if (gameArr[6].equals(gameArr[4]) && gameArr[4].equals(gameArr[2]) && !gameArr[2].isEmpty()) winChar = gameArr[2];
+    else return 0;
+
+    return (winChar.equals(myChar)) ? 1 : -1;
+  }
+
   @Override
   public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
     super.onCreateOptionsMenu(menu, inflater);
