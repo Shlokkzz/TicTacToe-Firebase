@@ -62,7 +62,7 @@ The **Tic Tac Toe App** is a mobile game application that supports two modes:
 ### Running
 1. Clone the repository from GitHub:
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/csf314-2024/a5-tic-tac-toe-cp0_a5.git
    ```
 2. Open the project in Android Studio.
 3. Replace Firebase configuration files (`google-services.json`) with your own.
@@ -99,9 +99,3 @@ The **Tic Tac Toe App** is a mobile game application that supports two modes:
 
 - Firebase integration was referenced from the official Firebase documentation.
 - Game logic and UI inspiration taken from Android developer resources.
-
----
-
-## Screenshots
-
-Include screenshots of the login screen, dashboard, single-player game, and two-player game here (if required by the submission guidelines).
